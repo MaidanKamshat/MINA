@@ -1,0 +1,57 @@
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Secrets and credentials
+.env
+.env.*
+!.env.example
+*token*.json
+*credentials*.json
+*secret*.json
+*oauth*client*.json
+*.pem
+*.key
+
+# Personal application data
+local_data/
+family_notes.json
+.streamlit/secrets.toml
+
+# Temporary files and backups
+.DS_Store
+*.log
+*.bak
+*.backup
+.mina_backup*/
+*backup*.py
+*before_v*.py
+
+# Local generated data
+evaluation/maps/
+evaluation/mina_runs.jsonl
+
+# Additional local Python environments
+.venv*/
+venv*/
+
+# Local databases and application state
+*.db
+*.sqlite
+*.sqlite3
+.streamlit/secrets.toml
+
+# Local IDE settings
+.idea/
+.vscode/
+
+# Operating system files
+.DS_Store

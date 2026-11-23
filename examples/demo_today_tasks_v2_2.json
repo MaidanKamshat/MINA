@@ -1,0 +1,8 @@
+{
+  "demo": true,
+  "description": "UI sample only. These are not Google Calendar or verified school events.",
+  "tasks": [
+    {"id": "demo_dropoff", "title": "School drop-off", "time": "8:30 AM", "done": false},
+    {"id": "demo_groceries", "title": "Groceries", "time": "", "done": false}
+  ]
+}

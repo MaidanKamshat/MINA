@@ -1,0 +1,55 @@
+/* MINA v2.15.3 — Welcome subtitle full-strength accent; nav unchanged.
+   Applied after the existing v2.1, v2.2, and v2.8 stylesheets.
+   Scoped selectors prevent chat, Family Hub and planner regressions. */
+
+:root {
+  /* The branded word MINA gets its original color from the existing theme.
+     --mina-original-name-accent is set from those same theme files in Python. */
+  --mina-welcome-muted: #8A9AA9;  /* quiet blue-gray */
+}
+
+/* Do NOT style .mina-name here: its pre-v2.15.1 accent must be preserved.
+   The initial-letter color is read from that exact original CSS declaration. */
+.mina-hero .mina-expansion .mina-initial {
+  color: var(--mina-original-name-accent) !important;
+}
+
+/* Calm, lightly visible supporting letters. Don't lower opacity on the
+   parent: that would also wash out M / I / N / A. */
+.mina-hero .mina-expansion {
+  color: var(--mina-welcome-muted) !important;
+  font-weight: 400;
+  /* Original theme may fade the whole subtitle via opacity/filter;
+     that also fades child initials regardless of their CSS color. */
+  opacity: 1 !important;
+  filter: none !important;
+  -webkit-text-fill-color: var(--mina-welcome-muted) !important;
+}
+.mina-hero .mina-expansion .mina-initial {
+  /* Match the brand name as a fully opaque, solid teal (not a faded child). */
+  color: var(--mina-original-name-accent, #088F94) !important;
+  -webkit-text-fill-color: var(--mina-original-name-accent, #088F94) !important;
+  opacity: 1 !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  font-weight: 700;
+}
+
+/* The header navigation now opens a native anchored popover immediately.
+   A subtle hover/focus response signals interactivity. */
+div[data-testid="stPopover"] button {
+  cursor: pointer;
+  transition: color 160ms ease, background-color 160ms ease,
+              border-color 160ms ease, box-shadow 160ms ease;
+}
+div[data-testid="stPopover"] button:hover {
+  background-color: rgba(13, 27, 42, 0.045);
+  border-color: rgba(13, 27, 42, 0.16);
+}
+div[data-testid="stPopover"] button:focus-visible {
+  outline: 2px solid #0D1B2A;
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  div[data-testid="stPopover"] button { transition: none; }
+}

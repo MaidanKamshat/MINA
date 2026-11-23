@@ -1,0 +1,4 @@
+# Install into existing MINA virtualenv: pip install -r requirements_calendar_v2_7.txt
+google-api-python-client>=2.100,<3
+google-auth-oauthlib>=1.2,<2
+google-auth-httplib2>=0.2,<1

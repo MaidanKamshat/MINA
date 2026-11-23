@@ -1,0 +1,130 @@
+/* MINA v2.1 — Editorial Burgundy & Powder Blue (design option #2)
+   Reference palette: burgundy #6A203D, cream #F7F2EE, powder blue #E4EDF5.
+   CSS-only visual layer. No requests, audio, maps, approvals or agent tools change.
+   Uses built-in system fonts; no third-party font download. */
+:root {
+  color-scheme: light;
+  --mina-bg: #F8F4F1;
+  --mina-burgundy: #6A203D;
+  --mina-burgundy-dark: #52182D;
+  --mina-ink: #30282B;
+  --mina-slate: #786F76;
+  --mina-powder: #E6EDF5;
+  --mina-line: #E7DDE0;
+  --mina-card: #FFFBF8;
+}
+html, body, [data-testid="stAppViewContainer"], .stApp {
+  color: var(--mina-ink);
+}
+.stApp, [data-testid="stAppViewContainer"] {
+  background:
+    radial-gradient(ellipse 46% 34% at -12% 2%, rgba(191,209,226,.42) 0%, rgba(191,209,226,.13) 65%, transparent 100%),
+    radial-gradient(ellipse 48% 30% at 110% 105%, rgba(192,213,232,.36) 0%, rgba(192,213,232,.12) 66%, transparent 100%),
+    linear-gradient(125deg, #FBF7F4 0%, #F8F4F1 58%, #F6F1F1 100%);
+  background-attachment: fixed;
+}
+[data-testid="stHeader"] { background: transparent; }
+[data-testid="stDecoration"] {display:none;}
+.block-container {max-width: 900px; padding-top: 1.0rem; padding-bottom: 7.25rem;}
+.mina-brand {
+  font-family: Georgia, 'Times New Roman', serif;
+  color:var(--mina-burgundy); font-size:1.25rem;
+  letter-spacing:.16em; font-weight:600; padding:.3rem 0;
+}
+.mina-brand-icon {font-family:Georgia,serif; font-size:1rem; margin-right:.4rem;}
+.mina-welcome {
+  min-height:min(58vh, 520px);
+  display:flex; flex-direction:column; align-items:center;
+  justify-content:center; text-align:center;
+  padding: 1.4rem .4rem 2rem;
+}
+.mina-welcome .mina-hello {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size:clamp(2.3rem, 5vw, 3.45rem); font-weight:500;
+  letter-spacing:-.04em; line-height:1.13;
+  color:var(--mina-ink); margin:0;
+}
+.mina-welcome .mina-name {color:var(--mina-burgundy); font-weight:600;}
+.mina-welcome .mina-expansion {
+  font-size:clamp(.98rem,2.15vw,1.32rem);
+  color:var(--mina-ink); margin:1.2rem 0 .7rem;
+  letter-spacing:-.018em; line-height:1.65;
+}
+.mina-initial {color:var(--mina-burgundy); font-weight:750;}
+.mina-tagline {
+  display:flex; align-items:center; justify-content:center; gap:1.15rem;
+  color:var(--mina-slate); font-style:italic;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size:clamp(.94rem,1.8vw,1.13rem);
+  margin: .3rem 0 0;
+}
+.mina-tagline::before,.mina-tagline::after {
+  content:'';display:block;width:2.7rem;height:1px;background:#D7C9CE;
+}
+/* User bubbles mirror the muted powder-blue mockup. The selector keys off
+   Streamlit's user avatar, so no new components or role logic are introduced. */
+[data-testid="stChatMessage"] {
+  border-radius: 23px; border:1px solid #E8DFE1;
+  background:rgba(255,251,248,.91);
+  box-shadow:0 6px 28px rgba(63,31,44,.045);
+  padding:1.08rem 1.2rem;
+  margin:.75rem 0;
+  color:var(--mina-ink);
+}
+[data-testid="stChatMessage"]:has([data-testid="stChatMessageAvatarUser"]) {
+  background:rgba(228,237,245,.96);
+  border-color:#DCE6F0;
+  box-shadow:none;
+  max-width:88%; margin-left:auto;
+}
+[data-testid="stChatMessage"] [data-testid="stChatMessageAvatarAssistant"],
+[data-testid="stChatMessage"] [data-testid="stChatMessageAvatarCustom"] {
+  background:var(--mina-burgundy);
+  color:white;
+  border-radius:100%;
+}
+[data-testid="stChatMessage"] [data-testid="stChatMessageAvatarUser"] {
+  background:#E4E2E1; border-radius:100%;
+}
+[data-testid="stChatMessage"] p {line-height:1.65;}
+[data-testid="stChatMessage"] a {color:var(--mina-burgundy);}
+/* Single native Streamlit composer: microphone + submit are untouched. */
+[data-testid="stChatInput"] {max-width:900px;}
+[data-testid="stChatInput"] > div {
+  border:1px solid #E5D6DC;
+  border-radius:26px;
+  background:rgba(255,251,248,.97);
+  box-shadow:0 9px 35px rgba(65,32,45,.10);
+}
+[data-testid="stChatInput"] textarea {
+  font-size:1.03rem; color:var(--mina-ink);
+  background:transparent;
+}
+[data-testid="stChatInput"] [data-testid="stChatInputSubmitButton"] {
+  color:white; background:var(--mina-burgundy);
+  border-radius:50%;
+}
+[data-testid="stChatInput"] [data-testid="stChatInputSubmitButton"]:hover {
+  background:var(--mina-burgundy-dark);
+}
+[data-testid="stSidebar"] {background:#F4ECEB;}
+[data-testid="stSidebar"] button[kind="primary"] {
+  background:var(--mina-burgundy);
+}
+[data-testid="stChatMessage"] [data-testid="stCaptionContainer"],
+[data-testid="stChatMessage"] small {color:var(--mina-slate);}
+/* Native status notices, buttons and other functional UI remain intact. */
+@media(max-width:650px) {
+  .block-container {padding-top:.8rem;padding-bottom:6.2rem;}
+  .mina-brand {font-size:1.05rem;}
+  .mina-welcome {min-height:50vh;padding:.5rem .1rem 2rem;}
+  .mina-welcome .mina-hello {font-size:clamp(2rem,8vw,2.5rem);}
+  .mina-welcome .mina-expansion {max-width:95%;line-height:1.7;}
+  .mina-tagline {gap:.55rem;}
+  .mina-tagline::before,.mina-tagline::after {width:1rem;}
+  [data-testid="stChatMessage"] {padding:.9rem .8rem;}
+  [data-testid="stChatMessage"]:has([data-testid="stChatMessageAvatarUser"]) {max-width:96%;}
+}
+@media(prefers-reduced-motion: reduce) {
+  *,*:before,*:after {scroll-behavior:auto !important;}
+}
